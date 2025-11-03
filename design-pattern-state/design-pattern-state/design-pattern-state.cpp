@@ -2,19 +2,75 @@
 //
 
 #include <iostream>
+#include "SafeFrame.h"
+
+void sample()
+{
+    SafeFrame safeFrame;
+    safeFrame.setClock(3);
+    safeFrame.doUse();
+
+    safeFrame.setClock(12);
+    safeFrame.doUse();
+    safeFrame.doAlarm();
+    safeFrame.doPhone();
+
+    safeFrame.setClock(0);
+    safeFrame.doUse();
+    safeFrame.doAlarm();
+    safeFrame.doPhone();
+
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    SafeFrame safeFrame;
+
+    while (true)
+    {
+        std::cout << "\n=== メニュー ===\n";
+        std::cout << "1: 金庫使用ボタン\n";
+        std::cout << "2: 非常ベルボタン\n";
+        std::cout << "3: 通常通話ボタン\n";
+        std::cout << "4: サンプル実行\n";
+        std::cout << "0: 終了ボタン\n";
+        std::cout << "番号を入力してください: ";
+
+        int input;
+        std::cin >> input;
+
+        // 入力エラー（数字以外）対応
+        if (std::cin.fail())
+        {
+            std::cin.clear(); // エラー状態をクリア
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 入力バッファを破棄
+            std::cout << "数値を入力してください。\n";
+            continue;
+        }
+
+        if (input == 0)
+        {
+            std::cout << "終了します。\n";
+            break;
+        }
+
+        switch (input)
+        {
+        case 1:
+            safeFrame.doUse();
+            break;
+        case 2:
+            safeFrame.doAlarm();
+            break;
+        case 3:
+            safeFrame.doPhone();
+            break;
+        case 4:
+            sample();
+            break;
+        default:
+            std::cout << "無効な入力です。\n";
+            break;
+        }
+    }
 }
-
-// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
-// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
-
-// 作業を開始するためのヒント: 
-//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
-//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
-//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
-//   4. エラー一覧ウィンドウを使用してエラーを表示します
-//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
-//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します

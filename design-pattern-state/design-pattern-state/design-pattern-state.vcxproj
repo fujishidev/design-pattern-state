@@ -123,7 +123,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DayState.cpp" />
     <ClCompile Include="design-pattern-state.cpp" />
+    <ClCompile Include="IContext.cpp" />
+    <ClCompile Include="IState.cpp" />
+    <ClCompile Include="NightState.cpp" />
+    <ClCompile Include="SafeFrame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DayState.h" />
+    <ClInclude Include="IContext.h" />
+    <ClInclude Include="IState.h" />
+    <ClInclude Include="NightState.h" />
+    <ClInclude Include="SafeFrame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
